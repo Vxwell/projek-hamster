@@ -11,3 +11,5 @@ $routes->get('/login', 'LoginController::index');
 $routes->post('/login', 'LoginController::verifikasi');
 
 $routes->get('/homecoba', 'CobaHomeController::index');
+
+$routes->get('/home', 'DashboardController::index');
