@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\Model_hamster;
 use CodeIgniter\Controller;
 
-class DashboardController extends Controller
+class Dashboard extends Controller
 {
     protected $model_hamster;
 
