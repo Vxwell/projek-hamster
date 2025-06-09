@@ -1,42 +1,92 @@
-<div class="container-fluid">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Hamster</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+        }
 
-<div id="carouselExampleIndicators" class="carousel slide mx-auto" style="width: 90%;">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        .sidebar {
+            width: 250px;
+            background-color: #f8f9fa;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .sidebar a {
+            padding: 15px;
+            display: block;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background-color: #e9ecef;
+            color: #0d6efd;
+        }
+
+        .content {
+            flex: 1;
+            padding: 30px;
+            background-color: #f1f3f5;
+        }
+
+        .active {
+            background-color: #0d6efd !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4 class="text-center">🐹 HamsterApp</h4>
+        <a href="#" class="active" onclick="showSection('jenis')">Jenis Hamster</a>
+        <a href="#" onclick="showSection('peralatan')">Peralatan</a>
+        <a href="#" onclick="showSection('tentang')">Tentang Aplikasi</a>
+        <a href="#" onclick="showSection('bantuan')">Bantuan</a>
     </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="<?php echo base_url('assets/img/1.jpg')?>" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="<?php echo base_url('assets/img/2.jpg')?>" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="<?php echo base_url('assets/img/3.jpg')?>" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="<?php echo base_url('assets/img/4.jpg')?>" class="d-block w-100" alt="...">
-      </div>
-    </div>
-  </div>
 
-<div class="row text-center mt-5">
-
-    <?php foreach ($hamster as $brg) : ?>
-
-        <div class="card ml-5" style="width: 16rem;">
-            <img src="<?php echo base_url().'/uploads/'.$brg->gambar ?>" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title mb-1"><?php echo $brg->jenis ?></h5>
-                <small><?php echo $brg->keterangan ?></small><br><br>
-                <span class="badge badge-pill badge-success mb-3">Rp. <?php echo $brg->harga ?></span><br>
-                <a href="#" class="btn btn-sm btn-primary">Masukin Keranjang</a><br><br>
-                <a href="#" class="btn btn-sm btn-success">Detailnya</a>
-            </div>
+    <!-- Content -->
+    <div class="content">
+        <div id="jenis">
+            <h2>Jenis Hamster</h2>
+            <p>Beberapa jenis hamster yang populer: Syrian, Roborovski, Campbell, Winter White, dan Chinese.</p>
         </div>
-
-        <?php endforeach; ?>
-</div>
+        <div id="peralatan" style="display:none;">
+            <h2>Peralatan</h2>
+            <p>Kandang, roda putar, botol minum, tempat makan, dan serbuk kayu adalah peralatan dasar untuk hamster.</p>
+        </div>
+        <div id="tentang" style="display:none;">
+            <h2>Tentang Aplikasi</h2>
+            <p>Aplikasi ini dirancang untuk membantu pecinta hamster dalam mengenal jenis dan cara perawatannya.</p>
+        </div>
+        <div id="bantuan" style="display:none;">
+            <h2>Bantuan</h2>
+            <p>Untuk bantuan, silakan hubungi admin atau buka menu bantuan di bagian pengaturan.</p>
+        </div>
     </div>
+
+    <!-- Bootstrap JS and JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showSection(section) {
+            const sections = ['jenis', 'peralatan', 'tentang', 'bantuan'];
+            sections.forEach(id => {
+                document.getElementById(id).style.display = id === section ? 'block' : 'none';
+            });
+
+            // update active class
+            document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

@@ -17,9 +17,6 @@ class DashboardController extends Controller
     public function index()
     {
         $data['hamster'] = $this->model_hamster->tampil_data()->getResult();
-        return view('templates/header')
-            . view('templates/sidebar')
-            . view('dashboard', $data)
-            . view('templates/footer');
+        return view ('dashboard', $data);
     }
 }
