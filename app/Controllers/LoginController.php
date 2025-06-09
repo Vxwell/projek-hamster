@@ -16,7 +16,7 @@ class LoginController extends BaseController
         // cek username dan password
         if ($username === 'admin' && $password === 'admin123') {
             // jika benar, masuk ke halaman home
-            return redirect()->to('/homecoba');
+            return redirect()->to('/home');
         } else {
             // jika salah, tampilkan pesan kesalahan berpikir
             return view('loginpage', ['error' => true]);

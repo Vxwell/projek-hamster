@@ -41,6 +41,12 @@
 </head>
 <body>
 
+    <?php if (session()->getFlashdata('success')): ?>
+        <script>
+            alert("<?= session()->getFlashdata('success') ?>");
+        </script>
+    <?php endif; ?>
+
     <h1 style="margin-bottom: 80px;">Toko Langgan Hamster</h1>
 
     <Form method="post" action="/login">

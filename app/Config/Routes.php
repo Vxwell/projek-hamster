@@ -12,4 +12,7 @@ $routes->post('/login', 'LoginController::verifikasi');
 
 $routes->get('/homecoba', 'CobaHomeController::index');
 
-$routes->get('/home', 'Dashboard::index');
+$routes->get('/home', 'DashboardController::index');
+
+$routes->get('/registrasi', 'RegistrasiController::index');
+$routes->post('/registrasi', 'RegistrasiController::registrasi');
