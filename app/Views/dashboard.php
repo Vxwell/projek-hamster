@@ -13,9 +13,16 @@
 
         .sidebar {
             width: 250px;
-            background-color: #f8f9fa;
+            background-color: rgb(253, 177, 13);
             padding-top: 20px;
             box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h4 {
+            padding: 10px;
+            color: white;
+            background-color: rgb(253, 129, 13);
+            margin-bottom: 20px;
         }
 
         .sidebar a {
@@ -26,8 +33,8 @@
         }
 
         .sidebar a:hover {
-            background-color: #e9ecef;
-            color: #0d6efd;
+            background-color: rgb(255, 222, 36);
+            color: rgb(0, 0, 0);
         }
 
         .content {
@@ -37,8 +44,33 @@
         }
 
         .active {
-            background-color: #0d6efd !important;
+            background-color: rgb(255, 222, 36) !important;
             color: white !important;
+        }
+
+        /* Responsif untuk mobile */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                padding: 10px 0;
+            }
+
+            .sidebar a {
+                padding: 10px;
+                text-align: center;
+                flex: 1;
+            }
+
+            .sidebar h4 {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -46,19 +78,61 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <h4 class="text-center">🐹 HamsterApp</h4>
-        <a href="#" class="active" onclick="showSection('jenis')">Jenis Hamster</a>
-        <a href="#" onclick="showSection('peralatan')">Peralatan</a>
-        <a href="#" onclick="showSection('tentang')">Tentang Aplikasi</a>
-        <a href="#" onclick="showSection('bantuan')">Bantuan</a>
+        <h4 class="text-center">Hamster Langgan</h4>
+        <a href="#" onclick="showSection('jenis', event)">Jenis Hamster</a>
+        <a href="#" onclick="showSection('peralatan', event)">Peralatan</a>
+        <a href="#" onclick="showSection('tentang', event)">Tentang Aplikasi</a>
+        <a href="#" onclick="showSection('bantuan', event)">Bantuan</a>
     </div>
+
 
     <!-- Content -->
     <div class="content">
+
+        <!-- Carousel -->
+<div id="hamsterCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="<?= base_url('uploads/slider1.png') ?>" class="d-block w-100" alt="slider1" style="height: 300px; object-fit: cover;">
+    </div>
+    <div class="carousel-item">
+      <img src="<?= base_url('uploads/slider2.png') ?>" class="d-block w-100" alt="slider2" style="height: 300px; object-fit: cover;">
+    </div>
+    <div class="carousel-item">
+      <img src="<?= base_url('uploads/slider3.png') ?>" class="d-block w-100" alt="slider3" style="height: 300px; object-fit: cover;">
+    </div>
+    <div class="carousel-item">
+      <img src="<?= base_url('uploads/slider4.png') ?>" class="d-block w-100" alt="slider4" style="height: 300px; object-fit: cover;">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#hamsterCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#hamsterCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
         <div id="jenis">
-            <h2>Jenis Hamster</h2>
-            <p>Beberapa jenis hamster yang populer: Syrian, Roborovski, Campbell, Winter White, dan Chinese.</p>
-        </div>
+    <h2 class="mb-3">Daftar Jenis Hamster</h2>
+    <div class="row row-cols-2 row-cols-md-4 g-3">
+        <?php foreach ($hamster as $h) : ?>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="<?= base_url('uploads/' . $h->gambar) ?>" class="card-img-top" alt="<?= esc($h->jenis) ?>">
+                    <div class="card-body p-2">
+                        <h5 class="card-title" style="font-size: 1rem;"><?= esc($h->jenis) ?></h5>
+                        <p class="card-text" style="font-size: 0.9rem;">Rp <?= number_format($h->harga, 0, ',', '.') ?></p>
+                        <p class="card-text" style="font-size: 0.85rem;">Stok: <?= $h->stok ?></p>
+                        <a href="#" class="btn btn-sm btn-warning">Masukkan Keranjang</a>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+
         <div id="peralatan" style="display:none;">
             <h2>Peralatan</h2>
             <p>Kandang, roda putar, botol minum, tempat makan, dan serbuk kayu adalah peralatan dasar untuk hamster.</p>
@@ -73,16 +147,16 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS and JavaScript -->
+    <!-- Bootstrap JS dan Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function showSection(section) {
+        function showSection(section, event) {
             const sections = ['jenis', 'peralatan', 'tentang', 'bantuan'];
             sections.forEach(id => {
                 document.getElementById(id).style.display = id === section ? 'block' : 'none';
             });
 
-            // update active class
+            // Update class aktif
             document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
             event.target.classList.add('active');
         }
