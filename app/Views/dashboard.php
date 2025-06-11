@@ -80,7 +80,7 @@
     <div class="sidebar">
         <h4 class="text-center">Hamster Langgan</h4>
         <a href="#" onclick="showSection('jenis', event)">Jenis Hamster</a>
-        <a href="#" onclick="showSection('peralatan', event)">Peralatan</a>
+        <a href="#" onclick="showSection('peralatan', event)">Kebutuhan Hamster</a>
         <a href="#" onclick="showSection('tentang', event)">Tentang Aplikasi</a>
         <a href="#" onclick="showSection('bantuan', event)">Bantuan</a>
     </div>
