@@ -8,7 +8,7 @@ class PeralatanController extends BaseController
     public function index()
     {
         $model = new PeralatanModel();
-        $data['peralatan'] = $model->findAll();
+        $data['kebutuhan_hamster'] = $model->findAll();
 
         return view('dashboard', $data);
     }
