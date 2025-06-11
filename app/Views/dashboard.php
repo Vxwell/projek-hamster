@@ -169,7 +169,7 @@
 
 
         <div id="tentang" style="display:none;">
-            <h2>Tentang Aplikasi</h2>
+            <h2>Tentang Aplikasir</h2>
             <p>Aplikasi ini dirancang untuk membantu pecinta hamster dalam mengenal jenis dan cara perawatannya.</p>
         </div>
         <div id="bantuan" style="display:none;">
