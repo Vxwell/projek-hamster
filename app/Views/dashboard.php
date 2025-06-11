@@ -133,10 +133,25 @@
 </div>
 
 
-        <div id="peralatan" style="display:none;">
-            <h2>Peralatan</h2>
-            <p>Kandang, roda putar, botol minum, tempat makan, dan serbuk kayu adalah peralatan dasar untuk hamster.</p>
-        </div>
+<div id="peralatan" style="display:none;">
+    <h2 class="mb-3">Daftar Peralatan Hamster</h2>
+    <div class="row row-cols-2 row-cols-md-4 g-3">
+        <?php foreach ($peralatan as $p) : ?>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="<?= base_url('uploads/' . $p['gambar']) ?>" class="card-img-top" alt="<?= esc($p['nama']) ?>">
+                    <div class="card-body p-2">
+                        <h5 class="card-title" style="font-size: 1rem;"><?= esc($p['nama']) ?></h5>
+                        <p class="card-text" style="font-size: 0.9rem;">Rp <?= number_format($p['harga'], 0, ',', '.') ?></p>
+                        <a href="#" class="btn btn-sm btn-warning">Masukkan Keranjang</a>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+
         <div id="tentang" style="display:none;">
             <h2>Tentang Aplikasi</h2>
             <p>Aplikasi ini dirancang untuk membantu pecinta hamster dalam mengenal jenis dan cara perawatannya.</p>
