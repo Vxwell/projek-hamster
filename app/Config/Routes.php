@@ -18,4 +18,4 @@ $routes->get('/registrasi', 'RegistrasiController::index');
 $routes->post('/registrasi', 'RegistrasiController::registrasi');
 
 $routes->get('/dashboard', 'DashboardController::index');
-
+$routes->get('/logout', 'LoginController::logout');

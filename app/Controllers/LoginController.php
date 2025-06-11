@@ -22,10 +22,23 @@ class LoginController extends BaseController
         // cek username dan password
         if ($user && password_verify($password, $user['password'])) {
             // jika benar, masuk ke halaman home
+            // buat session
+            session()->set([
+                'logged_in' => true,
+                'user_id'   => $user['id'],
+                'username'  => $user['username']
+            ]);
             return redirect()->to('/home');
         } else {
             // jika salah, tampilkan pesan kesalahan berpikir
             return view('loginpage', ['error' => true]);
         }
+    }
+
+    public function logout()
+    {
+        session()->destroy();
+        setcookie('pesan_logout', 'Anda telah logout.', time() + 5);
+        return redirect()->to('/login');
     }
 }

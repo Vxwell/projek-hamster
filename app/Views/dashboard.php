@@ -1,3 +1,5 @@
+<?php $session = session(); ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -79,10 +81,24 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <h4 class="text-center">Hamster Langgan</h4>
+        <div class="d-flex justify-content-center gap-2 mb-2">
+            <?php if ($session->get('logged_in')) : ?>
+                <span class="text-dark fw-bold"><?= esc($session->get('username')) ?></span>
+            <?php else : ?>
+                <a href="/registrasi">Register</a>
+                <div style="width: 1px; height: 48px; background-color: #000;"></div> 
+                <a href="/login">Login</a>
+            <?php endif; ?>
+        </div>
         <a href="#" onclick="showSection('jenis', event)">Jenis Hamster</a>
         <a href="#" onclick="showSection('peralatan', event)">Kebutuhan Hamster</a>
         <a href="#" onclick="showSection('tentang', event)">Tentang Aplikasi</a>
         <a href="#" onclick="showSection('bantuan', event)">Bantuan</a>
+        <?php if ($session->get('logged_in')) : ?>
+            <div class="mt-4 text-center">
+                <a href="/logout" class="btn btn-danger btn-sm">Logout</a>
+            </div>
+        <?php endif; ?>
     </div>
 
 

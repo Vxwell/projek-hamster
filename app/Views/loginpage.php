@@ -46,6 +46,11 @@
             <div class="alert alert-danger">Username / Password Salah!</div>
         <?php endif; ?>
 
+        <?php if (isset($_COOKIE['pesan_logout'])): ?>
+            <div class="alert alert-success"><?= $_COOKIE['pesan_logout'] ?></div>
+            <?php setcookie('pesan_logout', '', time() - 3600, '/'); // Hapus cookie ?>
+        <?php endif; ?>
+
         <form method="post" action="/login">
 
             <div class="mb-3">
