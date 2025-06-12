@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\Model_hamster;
+use App\Models\HamsterModel;
 use App\Models\KebutuhanModel;
 use CodeIgniter\Controller;
 
@@ -13,15 +13,13 @@ class DashboardController extends Controller
 
     public function __construct()
     {
-        $this->model_hamster = new Model_hamster();
+        $this->model_hamster = new HamsterModel();
         $this->model_kebutuhan = new KebutuhanModel();
     }
-
     public function index()
     {
         $data['hamster'] = $this->model_hamster->tampil_data()->getResult();
-        $data['peralatan'] = $this->model_kebutuhan->findAll(); // ambil semua data peralatan
-
-        return view('dashboard', $data);
+        $data['peralatan'] = $this->model_kebutuhan->findAll();
+        return view('DashboardView', $data);
     }
 }

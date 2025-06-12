@@ -4,11 +4,14 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class LoginModel extends Model {
+class LoginModel extends Model
+{
     protected $table = 'user';
     protected $allowedFields = ['username', 'password'];
 
-    public function cekUsername($username) {
+    public function cekUsername($username)
+    {
+
         return $this->where('username', $username)->first();
     }
 }

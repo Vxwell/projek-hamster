@@ -1,14 +1,14 @@
 <?php
-
 namespace App\Controllers;
 
 use App\Models\LoginModel;
 
 class LoginController extends BaseController
 {
-    public function index() : string
+
+    public function index(): string
     {
-        return view('loginpage');
+        return view('LoginView');
     }
 
     public function verifikasi()
@@ -19,19 +19,21 @@ class LoginController extends BaseController
         $model = model(LoginModel::class);
         $user = $model->cekUsername($username);
 
-        // cek username dan password
         if ($user && password_verify($password, $user['password'])) {
-            // jika benar, masuk ke halaman home
-            // buat session
+
             session()->set([
+
                 'logged_in' => true,
-                'user_id'   => $user['id'],
-                'username'  => $user['username']
+
+                'user_id' => $user['id'],
+
+                'username' => $user['username']
+
             ]);
+
             return redirect()->to('/home');
         } else {
-            // jika salah, tampilkan pesan kesalahan berpikir
-            return view('loginpage', ['error' => true]);
+            return view('LoginView', ['error' => true]);
         }
     }
 
