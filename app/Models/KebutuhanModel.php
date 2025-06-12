@@ -8,6 +8,6 @@ class KebutuhanModel extends Model
 {
     protected $table = 'kebutuhan_hamster';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nama', 'harga', 'keterangan', 'gambar'];
+    protected $allowedFields = ['nama', 'harga', 'keterangan', 'gambar','stok'];
     protected $returnType = 'array';
 }

@@ -129,6 +129,8 @@
                                     </a>
                                 </h5>
                                 <p class="card-text" style="font-size: 0.9rem;">Rp <?= number_format($p['harga'], 0, ',', '.') ?></p>
+                                <p class="card-text" style="font-size: 0.85rem;">Stok: <?= $p['stok'] ?></p>
+
                                 <?php if ($session->get('logged_in')) : ?>
                                     <form action="<?= base_url('keranjang/tambah') ?>" method="post">
                                         <input type="hidden" name="id_produk" value="<?= $p['id'] ?>">
