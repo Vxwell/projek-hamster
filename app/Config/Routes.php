@@ -8,7 +8,8 @@ use CodeIgniter\Router\RouteCollection;
 
  */
 
-$routes->get('/', 'Home::index');
+$routes->get('/', 'DashboardController::index');
+
 $routes->get('/login', 'LoginController::index');
 $routes->post('/login', 'LoginController::verifikasi');
 $routes->get('/homecoba', 'CobaHomeController::index');
@@ -26,3 +27,7 @@ $routes->get('/checkout', 'PembayaranController::index');
 $routes->post('/checkout/proses', 'PembayaranController::prosesPembayaran');
 $routes->get('/transaksi', 'PembayaranController::daftarTransaksi');
 $routes->get('/transaksi/detail/(:num)', 'PembayaranController::detailTransaksi/$1');
+
+$routes->get('hamster/detail/(:num)', 'DashboardController::detailHamster/$1');
+$routes->get('peralatan/detail/(:num)', 'DashboardController::detailPeralatan/$1');
+$routes->get('kebutuhan/detail/(:num)', 'DashboardController::detailPeralatan/$1');

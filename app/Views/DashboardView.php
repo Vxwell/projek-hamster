@@ -6,72 +6,19 @@
     <meta charset="UTF-8">
     <title>Dashboard Hamster</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <style>
-        body {
-            min-height: 100vh;
-            display: flex;
-        }
-
-        .sidebar {
-            width: 250px;
-            background-color: rgb(253, 177, 13);
-            padding-top: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .sidebar h4 {
-            padding: 10px;
-            color: white;
-            background-color: rgb(253, 129, 13);
-            margin-bottom: 20px;
-        }
-
-        .sidebar a {
-            padding: 15px;
-            display: block;
-            color: #333;
-            text-decoration: none;
-        }
-
-        .sidebar a:hover {
-            background-color: rgb(255, 222, 36);
-            color: rgb(0, 0, 0);
-        }
-
-        .content {
-            flex: 1;
-            padding: 30px;
-            background-color: #f1f3f5;
-        }
-
-        .active {
-            background-color: rgb(255, 222, 36) !important;
-            color: white !important;
-        }
-
+        body { min-height: 100vh; display: flex; }
+        .sidebar { width: 250px; background-color: rgb(253, 177, 13); padding-top: 20px; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); }
+        .sidebar h4 { padding: 10px; color: white; background-color: rgb(253, 129, 13); margin-bottom: 20px; }
+        .sidebar a { padding: 15px; display: block; color: #333; text-decoration: none; }
+        .sidebar a:hover { background-color: rgb(255, 222, 36); color: rgb(0, 0, 0); }
+        .content { flex: 1; padding: 30px; background-color: #f1f3f5; }
+        .active { background-color: rgb(255, 222, 36) !important; color: white !important; }
         @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-around;
-                padding: 10px 0;
-            }
-
-            .sidebar a {
-                padding: 10px;
-                text-align: center;
-                flex: 1;
-            }
-
-            .sidebar h4 {
-                display: none;
-            }
+            body { flex-direction: column; }
+            .sidebar { width: 100%; display: flex; flex-direction: row; justify-content: space-around; padding: 10px 0; }
+            .sidebar a { padding: 10px; text-align: center; flex: 1; }
+            .sidebar h4 { display: none; }
         }
     </style>
 </head>
@@ -105,20 +52,14 @@
 
     <div class="content">
 
+        <!-- Carousel -->
         <div id="hamsterCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="<?= base_url('uploads/slider1.png') ?>" class="d-block w-100" alt="slider1" style="height: 300px; object-fit: cover;">
-                </div>
-                <div class="carousel-item">
-                    <img src="<?= base_url('uploads/slider2.png') ?>" class="d-block w-100" alt="slider2" style="height: 300px; object-fit: cover;">
-                </div>
-                <div class="carousel-item">
-                    <img src="<?= base_url('uploads/slider3.png') ?>" class="d-block w-100" alt="slider3" style="height: 300px; object-fit: cover;">
-                </div>
-                <div class="carousel-item">
-                    <img src="<?= base_url('uploads/slider4.png') ?>" class="d-block w-100" alt="slider4" style="height: 300px; object-fit: cover;">
-                </div>
+                <?php for ($i = 1; $i <= 4; $i++) : ?>
+                    <div class="carousel-item <?= $i == 1 ? 'active' : '' ?>">
+                        <img src="<?= base_url("uploads/slider$i.png") ?>" class="d-block w-100" alt="slider<?= $i ?>" style="height: 300px; object-fit: cover;">
+                    </div>
+                <?php endfor; ?>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#hamsterCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
@@ -128,6 +69,7 @@
             </button>
         </div>
 
+        <!-- Flash Messages -->
         <?php if (session()->getFlashdata('success')): ?>
             <div class="alert alert-success"> <?= session()->getFlashdata('success') ?> </div>
         <?php endif; ?>
@@ -135,21 +77,29 @@
             <div class="alert alert-danger"> <?= session()->getFlashdata('error') ?> </div>
         <?php endif; ?>
 
+        <!-- Jenis Hamster -->
         <div id="jenis">
             <h2 class="mb-3">Daftar Jenis Hamster</h2>
             <div class="row row-cols-2 row-cols-md-4 g-3">
                 <?php foreach ($hamster as $h) : ?>
                     <div class="col">
                         <div class="card h-100">
-                            <img src="<?= base_url('uploads/' . $h->gambar) ?>" class="card-img-top" alt="<?= esc($h->jenis) ?>">
+                            <a href="<?= base_url('hamster/detail/' . $h->id_hamster) ?>">
+                                <img src="<?= base_url('uploads/' . $h->gambar) ?>" class="card-img-top" alt="<?= esc($h->jenis) ?>">
+                            </a>
                             <div class="card-body p-2">
-                                <h5 class="card-title" style="font-size: 1rem;"><?= esc($h->jenis) ?></h5>
+                                <h5 class="card-title" style="font-size: 1rem;">
+                                    <a href="<?= base_url('hamster/detail/' . $h->id_hamster) ?>" class="text-decoration-none text-dark">
+                                        <?= esc($h->jenis) ?>
+                                    </a>
+                                </h5>
                                 <p class="card-text" style="font-size: 0.9rem;">Rp <?= number_format($h->harga, 0, ',', '.') ?></p>
                                 <p class="card-text" style="font-size: 0.85rem;">Stok: <?= $h->stok ?></p>
                                 <?php if ($session->get('logged_in')) : ?>
                                     <form action="<?= base_url('keranjang/tambah') ?>" method="post">
                                         <input type="hidden" name="id_produk" value="<?= $h->id_hamster ?>">
-                                        <input type="hidden" name="jenis_produk" value="hamster"> <input type="hidden" name="jumlah" value="1">
+                                        <input type="hidden" name="jenis_produk" value="hamster">
+                                        <input type="hidden" name="jumlah" value="1">
                                         <button type="submit" class="btn btn-sm btn-warning">Masukkan Keranjang</button>
                                     </form>
                                 <?php else : ?>
@@ -162,19 +112,28 @@
             </div>
         </div>
 
+        <!-- Peralatan -->
         <div id="peralatan" style="display:none;">
             <h2 class="mb-3">Daftar Peralatan Hamster</h2>
             <div class="row row-cols-2 row-cols-md-4 g-3">
                 <?php foreach ($peralatan as $p) : ?>
                     <div class="col">
                         <div class="card h-100">
-                            <img src="<?= base_url('uploads/' . $p['gambar']) ?>" class="card-img-top" alt="<?= esc($p['nama']) ?>">
+                            <a href="<?= base_url('kebutuhan/detail/' . $p['id']) ?>">
+                                <img src="<?= base_url('uploads/' . $p['gambar']) ?>" class="card-img-top" alt="<?= esc($p['nama']) ?>">
+                            </a>
                             <div class="card-body p-2">
-                                <h5 class="card-title" style="font-size: 1rem;"><?= esc($p['nama']) ?></h5>
+                                <h5 class="card-title" style="font-size: 1rem;">
+                                    <a href="<?= base_url('kebutuhan/detail/' . $p['id']) ?>" class="text-decoration-none text-dark">
+                                        <?= esc($p['nama']) ?>
+                                    </a>
+                                </h5>
                                 <p class="card-text" style="font-size: 0.9rem;">Rp <?= number_format($p['harga'], 0, ',', '.') ?></p>
                                 <?php if ($session->get('logged_in')) : ?>
                                     <form action="<?= base_url('keranjang/tambah') ?>" method="post">
-                                        <input type="hidden" name="id_produk" value="<?= $p['id'] ?>"> <input type="hidden" name="jenis_produk" value="kebutuhan"> <input type="hidden" name="jumlah" value="1">
+                                        <input type="hidden" name="id_produk" value="<?= $p['id'] ?>">
+                                        <input type="hidden" name="jenis_produk" value="kebutuhan">
+                                        <input type="hidden" name="jumlah" value="1">
                                         <button type="submit" class="btn btn-sm btn-warning">Masukkan Keranjang</button>
                                     </form>
                                 <?php else : ?>
@@ -187,10 +146,13 @@
             </div>
         </div>
 
+        <!-- Tentang -->
         <div id="tentang" style="display:none;">
             <h2>Tentang Aplikasi</h2>
             <p>Aplikasi ini dirancang untuk membantu pecinta hamster dalam mengenal jenis dan cara perawatannya.</p>
         </div>
+
+        <!-- Bantuan -->
         <div id="bantuan" style="display:none;">
             <h2>Bantuan</h2>
             <p>Untuk bantuan, silakan hubungi admin atau buka menu bantuan di bagian pengaturan.</p>
@@ -210,14 +172,12 @@
                 event.target.classList.add('active');
             }
         }
-        document.addEventListener('DOMContentLoaded', function() {
+
+        document.addEventListener('DOMContentLoaded', function () {
             const jenisLink = document.querySelector('.sidebar a[onclick*="showSection(\'jenis\')"]');
-            if (jenisLink) {
-                jenisLink.classList.add('active');
-            }
+            if (jenisLink) jenisLink.classList.add('active');
         });
     </script>
-
 </body>
 
 </html>
