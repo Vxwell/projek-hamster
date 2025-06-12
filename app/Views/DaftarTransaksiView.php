@@ -40,6 +40,7 @@
                         <th scope="col">ID Transaksi</th>
                         <th scope="col">Tanggal</th>
                         <th scope="col">Total Harga</th>
+                        <th scope="col">Penerima</th>
                         <th scope="col">Status</th>
                         <th scope="col">Aksi</th>
                     </tr>
@@ -50,6 +51,7 @@
                             <td>#<?= $t['id'] ?></td>
                             <td><?= date('d M Y H:i', strtotime($t['tanggal_transaksi'])) ?></td>
                             <td>Rp <?= number_format($t['total_harga'], 0, ',', '.') ?></td>
+                            <td><?= esc($t['nama_penerima']) ?></td>
                             <td><span class="badge bg-<?= ($t['status_pembayaran'] == 'lunas' ? 'success' : 'warning') ?>"><?= esc(ucfirst($t['status_pembayaran'])) ?></span></td>
                             <td>
                                 <a href="<?= base_url('transaksi/detail/' . $t['id']) ?>" class="btn btn-info btn-sm">Lihat Detail</a>
