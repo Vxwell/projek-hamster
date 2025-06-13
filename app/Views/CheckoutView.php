@@ -59,9 +59,6 @@
                 </tfoot>
             </table>
 
-            <h4 class="mt-4">Metode Pembayaran (Simulasi)</h4>
-            <p>Anda akan melanjutkan ke simulasi pembayaran. Setelah konfirmasi, pesanan akan dianggap lunas.</p>
-
             <form action="<?= base_url('checkout/proses') ?>" method="post">
                 <h4 class="mt-4">Informasi Pengiriman</h4>
                 <div class="mb-3">
@@ -88,7 +85,7 @@
                         <option value="OVO">OVO</option>
                     </select>
                     <div class="form-text text-muted mt-1">
-                        Silakan pilih metode pembayaran yang tersedia.
+                        <p>Anda akan melanjutkan ke simulasi pembayaran. Setelah konfirmasi, pesanan akan dianggap lunas.</p>
                     </div>
                 </div>
 
