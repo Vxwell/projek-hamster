@@ -152,6 +152,7 @@
         <div id="tentang" style="display:none;">
             <h2>Tentang Aplikasi</h2>
             <p>Aplikasi ini dirancang untuk membantu pecinta hamster dalam mengenal jenis dan cara perawatannya.</p>
+            <p>Aplikasi ini dibuat oleh mahasiswa Sanata Dharma yang bernama Chandra sang jagoan jaringan terkuat.</p>
         </div>
 
         <!-- Bantuan -->
