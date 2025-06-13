@@ -70,11 +70,26 @@
                 </div>
                 <div class="mb-3">
                     <label for="no_hp" class="form-label">Nomor HP</label>
-                    <input type="text" class="form-control" id="no_hp" name="no_hp" required>
+                    <input type="text" class="form-control" id="no_hp" name="no_hp" required 
+                            pattern="[0-9]{10,15}" title="Nomor HP hanya boleh angka (10-15 digit)">
                 </div>
                 <div class="mb-3">
                     <label for="alamat_pengiriman" class="form-label">Alamat Pengiriman</label>
                     <textarea class="form-control" id="alamat_pengiriman" name="alamat_pengiriman" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="metode_pembayaran" class="form-label">Metode Pembayaran</label>
+                    <select class="form-select border-primary shadow-sm" id="metode_pembayaran" name="metode_pembayaran" required>
+                        <option disabled selected value="">💳 -- Pilih Metode Pembayaran --</option>
+                        <option value="Transfer Bank">Transfer Bank</option>
+                        <option value="QRIS">QRIS</option>
+                        <option value="Dana">Dana</option>
+                        <option value="GoPay">GoPay</option>
+                        <option value="OVO">OVO</option>
+                    </select>
+                    <div class="form-text text-muted mt-1">
+                        Silakan pilih metode pembayaran yang tersedia.
+                    </div>
                 </div>
 
                 <div class="d-flex justify-content-end mt-4">
@@ -85,6 +100,12 @@
         <?php endif; ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- js untuk menghilangkan huruf pada no_hp -->
+    <script>
+        document.getElementById('no_hp').addEventListener('input', function () {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    </script>
 </body>
 
 </html>
