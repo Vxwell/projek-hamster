@@ -153,7 +153,7 @@
             <h2>Tentang Aplikasi</h2>
             
             <p>Aplikasi ini dibuat oleh Chandra, mahasiswa Sanata Dharma yang memiliki minat besar dalam dunia hewan peliharaan, khususnya hamster.
-                Dibantu oleh temanya Ratna dan Oktavian yang juga memiliki ketertarikan yang sama, aplikasi ini bertujuan untuk memudahkan para pecinta hamster dalam mencari dan membeli berbagai jenis hamster serta peralatan yang dibutuhkan.
+                Dibantu oleh temannya Ratna dan Oktavian yang juga memiliki ketertarikan yang sama, aplikasi ini bertujuan untuk memudahkan para pecinta hamster dalam mencari dan membeli berbagai jenis hamster serta peralatan yang dibutuhkan.
                 Dengan antarmuka yang sederhana dan mudah digunakan, pengguna dapat dengan cepat menemukan hamster yang mereka inginkan, melihat detailnya, dan menambahkannya ke keranjang belanja.
                 Selain itu, aplikasi ini juga menyediakan informasi tentang peralatan yang diperlukan untuk merawat hamster dengan baik.
                 Kami berharap aplikasi ini dapat menjadi solusi bagi para pecinta hamster untuk mendapatkan hewan peliharaan yang mereka cintai dengan mudah dan nyaman.
@@ -170,7 +170,7 @@
 <div id="bantuan" style="display:none;">
     <h2>Bantuan</h2>
     <p>
-        Selamat datang di halaman bantuan! Berikut beberapa topik umum yang mungkin bisa membantu Anda:
+        Selamat datang di halaman bantuan! Berikut beberapa pertanyaan umum yang mungkin bisa membantu Anda:
         <br><br>
         <strong>1. Cara Membeli Produk:</strong><br>
         - Telusuri produk yang Anda inginkan dari kategori yang tersedia.<br>
