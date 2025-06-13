@@ -158,7 +158,7 @@
         <!-- Bantuan -->
         <div id="bantuan" style="display:none;">
             <h2>Bantuan</h2>
-            <p>Untuk bantuan, silakan hubungi admin atau buka menu bantuan di bagian pengaturan.</p>
+            <p>Untuk bantuan, silakan hubungi admin atau buka menu bantuan di bagian pengaturan ya.</p>
         </div>
     </div>
 
