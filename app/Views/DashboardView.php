@@ -167,11 +167,29 @@
 </div>
 
         <!-- Bantuan -->
-        <div id="bantuan" style="display:none;">
-            <h2>Bantuan</h2>
-            <p>Untuk bantuan, silakan hubungi admin atau buka menu bantuan di bagian pengaturan ya.</p>
-        </div>
-    </div>
+<div id="bantuan" style="display:none;">
+    <h2>Bantuan</h2>
+    <p>
+        Selamat datang di halaman bantuan! Berikut beberapa topik umum yang mungkin bisa membantu Anda:
+        <br><br>
+        <strong>1. Cara Membeli Produk:</strong><br>
+        - Telusuri produk yang Anda inginkan dari kategori yang tersedia.<br>
+        - Klik tombol "Tambah ke Keranjang" pada produk pilihan Anda.<br>
+        - Buka halaman Keranjang dan klik "Lanjut ke Pembayaran" untuk menyelesaikan pembelian.<br><br>
+
+        <strong>2. Metode Pembayaran:</strong><br>
+        - Kami menerima berbagai metode pembayaran seperti Transfer Bank, E-Wallet (OVO, GoPay, dll), dan Kartu Kredit.<br><br>
+
+        <strong>3. Status Pesanan:</strong><br>
+        - Anda dapat mengecek status pesanan Anda melalui halaman “Riwayat Pembelian”.<br><br>
+
+        <strong>4. Kontak Kami:</strong><br>
+        - Jika Anda mengalami kendala, silakan hubungi layanan pelanggan melalui email kami di <em>cs.langganhamster@gmail.com</em>.<br><br>
+
+        Terima kasih telah berbelanja di Langgan Hamster!
+    </p>
+</div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
