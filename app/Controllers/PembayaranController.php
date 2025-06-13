@@ -58,6 +58,10 @@ class PembayaranController extends Controller
 
         $id_pengguna = session()->get('user_id');
         $items_keranjang = $this->keranjangModel->getItemsKeranjangByUserId($id_pengguna);
+        $nama_penerima = $this->request->getPost('nama_penerima');
+        $no_hp = $this->request->getPost('no_hp');
+        $alamat_pengiriman = $this->request->getPost('alamat_pengiriman');
+        $metode_pembayaran = $this->request->getPost('metode_pembayaran');
 
         if (empty($items_keranjang)) {
             return redirect()->to('/keranjang')->with('error', 'Keranjang Anda kosong!');
@@ -83,9 +87,12 @@ class PembayaranController extends Controller
                 'total_harga'        => $total_harga,
                 'tanggal_transaksi'  => date('Y-m-d H:i:s'),
                 'status_pembayaran'  => 'lunas',
-                'metode_pembayaran'  => 'Transfer Bank (Simulasi)',
-                'alamat_pengiriman'  => 'Alamat default user'
+                'metode_pembayaran'  => $metode_pembayaran,
+                'nama_penerima'      => $nama_penerima,
+                'no_hp'              => $no_hp,
+                'alamat_pengiriman'  => $alamat_pengiriman
             ]);
+            $id_transaksi = $this->transaksiModel->insertID();
 
             if (!$id_transaksi) {
                 throw new \Exception("Gagal menyimpan transaksi utama.");

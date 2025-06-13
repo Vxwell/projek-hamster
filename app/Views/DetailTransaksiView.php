@@ -34,6 +34,8 @@
         <p><strong>Total Pembayaran:</strong> Rp <?= number_format($transaksi['total_harga'], 0, ',', '.') ?></p>
         <p><strong>Status Pembayaran:</strong> <span class="badge bg-<?= ($transaksi['status_pembayaran'] == 'lunas' ? 'success' : 'warning') ?>"><?= esc(ucfirst($transaksi['status_pembayaran'])) ?></span></p>
         <p><strong>Metode Pembayaran:</strong> <?= esc($transaksi['metode_pembayaran']) ?></p>
+        <p><strong>Nama Penerima:</strong> <?= esc($transaksi['nama_penerima']) ?></p>
+        <p><strong>Nomor HP:</strong> <?= esc($transaksi['no_hp']) ?></p>
         <p><strong>Alamat Pengiriman:</strong> <?= esc($transaksi['alamat_pengiriman']) ?></p>
 
         <h4 class="mt-4">Produk yang Dibeli:</h4>
