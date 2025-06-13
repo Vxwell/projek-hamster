@@ -21,6 +21,7 @@
                     <div class="card-body">
                         <h3 class="card-title"><?= esc($peralatan['nama']) ?></h3>
                         <h5 class="text-success mb-3">Rp <?= number_format($peralatan['harga'], 0, ',', '.') ?></h5>
+                        <p class="card-text"><strong>Stok:</strong> <?= $peralatan['stok'] ?></p>
                         <p class="card-text"><?= esc($peralatan['keterangan']) ?></p>
 
                         <?php if ($session->get('logged_in')) : ?>

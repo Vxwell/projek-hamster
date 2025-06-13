@@ -151,9 +151,20 @@
         <!-- Tentang -->
         <div id="tentang" style="display:none;">
             <h2>Tentang Aplikasi</h2>
-            <p>Aplikasi ini dirancang untuk membantu pecinta hamster dalam mengenal jenis dan cara perawatannya.</p>
-            <p>Aplikasi ini dibuat oleh mahasiswa Sanata Dharma yang bernama Chandra sang jagoan jaringan terkuat.</p>
-        </div>
+            
+            <p>Aplikasi ini dibuat oleh Chandra, mahasiswa Sanata Dharma yang memiliki minat besar dalam dunia hewan peliharaan, khususnya hamster.
+                Dibantu oleh temanya Ratna dan Oktavian yang juga memiliki ketertarikan yang sama, aplikasi ini bertujuan untuk memudahkan para pecinta hamster dalam mencari dan membeli berbagai jenis hamster serta peralatan yang dibutuhkan.
+                Dengan antarmuka yang sederhana dan mudah digunakan, pengguna dapat dengan cepat menemukan hamster yang mereka inginkan, melihat detailnya, dan menambahkannya ke keranjang belanja.
+                Selain itu, aplikasi ini juga menyediakan informasi tentang peralatan yang diperlukan untuk merawat hamster dengan baik.
+                Kami berharap aplikasi ini dapat menjadi solusi bagi para pecinta hamster untuk mendapatkan hewan peliharaan yang mereka cintai dengan mudah dan nyaman.
+            <h3>Contoh Hamster</h3>
+    <div style="display: flex; gap: 10px;">
+        <img src="<?= base_url('uploads/syrian.jpg') ?>" alt="syrian.jpg" width="200">
+        <img src="<?= base_url('uploads/campbell.jpg') ?>" alt="campbell.jpg" width="200">
+        <img src="<?= base_url('uploads/roborovski.jpg') ?>" alt="roborovski.jpg" width="200">
+        <img src="<?= base_url('uploads/winterwhite.jpg') ?>" alt="winterwhite.jpg" width="200">
+    </div>
+</div>
 
         <!-- Bantuan -->
         <div id="bantuan" style="display:none;">

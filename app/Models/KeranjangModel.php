@@ -79,6 +79,7 @@ class KeranjangModel extends Model
         return $detailedItems;
     }
 
+    
     public function hapusItemKeranjang($id_keranjang_item, $id_pengguna)
     {
         return $this->where(['id' => $id_keranjang_item, 'id_pengguna' => $id_pengguna])->delete();
