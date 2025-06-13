@@ -99,22 +99,30 @@ class PembayaranController extends Controller
             }
 
             foreach ($items_keranjang as $item) {
-                $this->detailTransaksiModel->insert([
-                    'id_transaksi'   => $id_transaksi,
-                    'id_produk'      => $item['id_produk'],
-                    'jenis_produk'   => $item['jenis_produk'],
-                    'jumlah'         => $item['jumlah'],
-                    'harga_satuan'   => $item['harga_saat_ini'],
-                    'subtotal'       => $item['harga_saat_ini'] * $item['jumlah'],
-                ]);
-                if ($item['jenis_produk'] === 'hamster') {
-                    $hamster = $this->hamsterModel->find($item['id_produk']);
-                    if ($hamster) {
-                        $new_stok = $hamster['stok'] - $item['jumlah'];
-                        $this->hamsterModel->update($item['id_produk'], ['stok' => $new_stok]);
-                    }
-                }
+        $this->detailTransaksiModel->insert([
+            'id_transaksi'   => $id_transaksi,
+            'id_produk'      => $item['id_produk'],
+            'jenis_produk'   => $item['jenis_produk'],
+            'jumlah'         => $item['jumlah'],
+            'harga_satuan'   => $item['harga_saat_ini'],
+            'subtotal'       => $item['harga_saat_ini'] * $item['jumlah'],
+        ]);
+
+        if ($item['jenis_produk'] === 'hamster') {
+            $hamster = $this->hamsterModel->find($item['id_produk']);
+            if ($hamster) {
+                $new_stok = $hamster['stok'] - $item['jumlah'];
+                $this->hamsterModel->update($item['id_produk'], ['stok' => $new_stok]);
             }
+        } else if ($item['jenis_produk'] === 'kebutuhan') {
+            $kebutuhan = $this->kebutuhanModel->find($item['id_produk']);
+            if ($kebutuhan) {
+                $new_stok = $kebutuhan['stok'] - $item['jumlah'];
+                $this->kebutuhanModel->update($item['id_produk'], ['stok' => $new_stok]);
+            }
+        }
+    }
+
 
             $this->keranjangModel->where('id_pengguna', $id_pengguna)->delete();
 
