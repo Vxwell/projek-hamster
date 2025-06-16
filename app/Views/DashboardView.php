@@ -114,7 +114,7 @@
 
         <!-- Peralatan -->
         <div id="peralatan" style="display:none;">
-            <h2 class="mb-3">Daftar Peralatan Hamster</h2>
+            <h2 class="mb-3">Daftar Kebutuhan Hamster</h2>
             <div class="row row-cols-2 row-cols-md-4 g-3">
                 <?php foreach ($peralatan as $p) : ?>
                     <div class="col">

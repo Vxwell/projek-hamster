@@ -5,7 +5,7 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 class RegistrasiModel extends Model {
-    protected $table = 'user';
+    protected $table = 'users';
     protected $allowedFields = ['username', 'password'];
 
     public function simpanUser($data) {
